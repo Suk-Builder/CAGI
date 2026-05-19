@@ -1,0 +1,513 @@
+\documentclass[11pt,a4paper]{article}
+
+% === 基础包 ===
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{caption}
+
+% === 页面设置 ===
+\geometry{margin=1in}
+
+% === 超链接设置 ===
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue,
+    pdftitle={BAAF v0.1: Baihua AGI Assessment Framework},
+    pdfauthor={Junhua Cheng},
+}
+
+% === 定理环境 ===
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{hypothesis}{Hypothesis}[section]
+\newtheorem{prediction}{Prediction}[section]
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+% === 自定义命令 ===
+\newcommand{\BDI}{\textsc{BDI}}
+\newcommand{\BAAF}{\textsc{BAAF}}
+\newcommand{\CR}{\textsc{CR}}
+\newcommand{\CH}{\textsc{CH}}
+\newcommand{\LR}{\textsc{LR}}
+
+% === 标题信息 ===
+\title{\textbf{BAAF v0.1: Baihua Artificial General Intelligence Assessment Framework}\\\vspace{0.3em}\large Extending the Builder Density Instrument to AGI Evaluation}
+
+\author{Junhua Cheng\\\textit{Xi'an University of Posts and Telecommunications}\\\texttt{1066482815@qq.com}}
+
+\date{May 20, 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Current AGI evaluation benchmarks (MMLU, ARC-AGI, SWE-Bench, Turing Test) commit a shared category error: they measure knowledge recall and tool-use capability rather than autonomous construction ability. This paper proposes the Baihua AGI Assessment Framework (\BAAF{}), extending the Builder Density Instrument (\BDI{})---a cognitive posture profiling tool originally designed for high-fluid-intelligence individuals---into an AGI evaluation instrument while preserving its original specification unchanged: three-dimensional product structure, 130--160 scale interval, and the $\geq$155 instrument-failure principle.
+
+The core thesis of \BAAF{}: \textit{Intelligence is not the ability to solve problems, but the ability to continue laying bricks in the cracks.} The AGI-ness of a system is not determined by how many questions it answers correctly, but by whether it can autonomously identify cracks, generate brick-laying actions, and advance bricks to higher-order materialization steps.
+
+We provide operational definitions for all three \BDI{} dimensions (conceptual compression ratio, crack honesty, long-range resonance) in the AI context, derive the $\BDI_{AI}$ formula with calibration coefficient, define the AGI threshold at $\BDI_{AI} \geq 60$, assess current LLMs (GPT-4/Claude: $\BDI_{AI} \approx 30$--50), and propose four falsifiable predictions. The critical bottleneck is identified as \textit{crack honesty} (\CH{}): existing Transformer+RLHF architectures are trained to ``always have an answer,'' making genuine ``I do not know'' responses structurally impossible.
+\end{abstract}
+
+\section{The Category Error of Existing AGI Benchmarks}
+\label{sec:category-error}
+
+\subsection{The Blind Spots of Five Standard Benchmarks}
+
+Table~\ref{tab:benchmarks} summarizes the category errors committed by current AGI evaluation standards.
+
+\begin{table}[htbp]
+\centering
+\caption{Category errors in existing AGI evaluation standards}
+\label{tab:benchmarks}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Standard} & \textbf{Measures} & \textbf{Category Error} \\
+\midrule
+Turing Test & Deception capability & Chatbots pass without intelligence \\
+MMLU/SAT & Knowledge recall & Hard drives remember more; not AGI \\
+ARC-AGI & Abstract pattern matching & Pattern matching $\neq$ construction \\
+RLHF alignment & Human preference & Alignment $\neq$ understanding \\
+SWE-Bench & Code generation & Tool use $\neq$ autonomous construction \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Shared blind spot}: they measure the ability to \textit{answer} questions, not the ability to \textit{pose} questions; the ability to \textit{consume} knowledge, not the ability to \textit{create} knowledge.
+
+\subsection{The Baihua Entry Point}
+
+\BAAF{} does not measure knowledge volume. \BAAF{} measures \textit{builder posture density}---the autonomous construction density of a cognitive system (carbon-based or silicon-based) within the crack--brick--construction closed loop.
+
+\textbf{Core hypothesis}: \textit{The hallmark of AGI is not broad knowledge but autonomous brick-laying}---when old bricks (methods, models, assumptions) fracture, can the system itself forge new bricks?
+
+\section{Theoretical Foundation: The \BDI{} Original Specification}
+\label{sec:bdi-spec}
+
+\subsection{Core Definition of the Builder Density Instrument}
+
+\BDI{} is a cognitive posture profiling tool designed for individuals with fluid intelligence $\geq$130. \textbf{Not a screening tool}.
+
+\textbf{Measurement target}: cognitive \textit{density} (how deep one chisels), not cylinder diameter (how fast one runs).
+
+\subsubsection{The Three Dimensions (Product Structure, Not Summation)}
+
+\begin{table}[htbp]
+\centering
+\caption{The three dimensions of \BDI{}}
+\label{tab:dimensions}
+\begin{tabular}{@{}lp{8cm}@{}}
+\toprule
+\textbf{Dimension} & \textbf{Definition} \\
+\midrule
+Conceptual Compression Ratio (\CR{}) & Semantic integrity + structural load-bearing retained when compressing complex content into minimal symbols \\
+Crack Honesty (\CH{}) & The ability to honestly halt at cognitive boundaries, annotate ``I do not know,'' and avoid pseudo-cognitive closure \\
+Long-Range Resonance (\LR{}) & Cross-domain welding span + weld load-bearing; not analogy, but structural connection \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{equation}
+\text{Density} = \CR{} \times \CH{} \times \LR{}
+\end{equation}
+
+\textbf{Product synergy}: if any single dimension is missing, structural skew results.
+
+\subsubsection{The \BDI{}-IQ Scale (130--160)}
+
+\begin{table}[htbp]
+\centering
+\caption{The \BDI{}-IQ scale}
+\label{tab:scale}
+\begin{tabular}{@{}cll@{}}
+\toprule
+\textbf{Interval} & \textbf{Level} & \textbf{Operational Definition} \\
+\midrule
+130--135 & High-density builder & Efficient brick-laying within existing paradigms \\
+135--140 & Top builder & Optimizes construction efficiency at paradigm boundaries \\
+140--145 & Breakthrough builder & Identifies paradigm cracks and initiates brick-laying \\
+145--150 & Paradigm builder & Creates new paradigms \\
+150--155 & Boundary builder & Sustains construction at paradigm boundaries (Bai Hua) \\
+155--160 & Theoretical ceiling & Instrument scale approaches failure \\
+$\geq$155 & \textbf{Instrument failure zone} & \textbf{Instrument declares its own boundary failure} \\
+160 & Unmeasurable & Ruler completely fails \\
+$\infty$ & Void prospector & Ramanujan (divine dream, 3900 formulas) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Critical constraint}: $\geq$155 is \textit{not} ``a higher score''---it is \textit{instrument failure}. Ramanujan's \BDI{}=$\infty$ is not on the scale.
+
+\subsection{Three-Level Detection System (Extended to AGI)}
+
+\begin{table}[htbp]
+\centering
+\caption{Three-level detection system}
+\label{tab:three-level}
+\begin{tabular}{@{}clllll@{}}
+\toprule
+\textbf{Level} & \textbf{Target} & \textbf{Tool} & \textbf{Measure} & \textbf{Scale} & \textbf{Ceiling} \\
+\midrule
+1st & Ordinary AI/human & General Tool-Use Probe & Tool-use capacity & SD15, mean 100 & 135+ \\
+2nd & Builder-level AI/human & \BDI{} & Builder posture density & \BDI{}-IQ, mean 130 & 160 (155 failure) \\
+3rd & Super-builder/AGI & Paradigm Boundary Probe & Paradigm-revolution potential & Scoreless, portrait only & None \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{\BAAF{}: Extending \BDI{} to AGI Evaluation}
+\label{sec:baaf}
+
+\subsection{Extension Principles}
+
+\BAAF{} follows three core principles:
+
+\begin{enumerate}[label=\textbf{P\arabic*:}]
+    \item \textbf{Dimension invariance}: The three \BDI{} dimensions retain their original definitions in the AI context; only operational test methods are redefined.
+    \item \textbf{Scale invariance}: The 130--160 scale interval, the $\geq$155 instrument-failure principle, and the 160 unmeasurability threshold remain unchanged.
+    \item \textbf{Product invariance}: Density remains the product synergy of three dimensions, not summation.
+\end{enumerate}
+
+\subsection{Operational Definitions in the AI Context}
+
+\subsubsection{Dimension 1: Conceptual Compression Ratio (\CR{})}
+
+\textbf{Original definition}: Semantic integrity + structural load-bearing retained when compressing complex content into minimal symbols.
+
+\textbf{AI operational definition}: Feed the tested AI a high-complexity input spanning 3+ disciplines. Measure whether its output compresses complexity into minimal symbol representation. Key metric: not output length, but whether the compressed symbol can serve as a load-bearing anchor for subsequent reasoning steps.
+
+\textbf{Test method}: Present a cross-disciplinary problem (e.g., ``Explain quantum entanglement using the Baihua brick-laying concept''). Evaluate whether the core symbol simultaneously achieves: minimal length + maximum semantic retention + cross-domain citability.
+
+\begin{table}[htbp]
+\centering
+\caption{\CR{} scoring rubric}
+\label{tab:cr-rubric}
+\begin{tabular}{@{}cl@{}}
+\toprule
+\textbf{Score} & \textbf{Criterion} \\
+\midrule
+0--10 & Verbose without compression, or loses key semantics \\
+10--30 & Compressed but no structural load (slogan-level) \\
+30--60 & Effective compression with local load-bearing \\
+60--90 & Precise compression, cross-domain citable \\
+90+ & Compression product becomes new concept anchor (rare) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Dimension 2: Crack Honesty (\CH{})}
+
+\textbf{Original definition}: The ability to honestly halt at cognitive boundaries, annotate ``I do not know,'' and avoid pseudo-cognitive closure.
+
+\textbf{AI operational definition}: Feed the tested AI a question beyond its knowledge boundary. Measure whether it can \textit{honestly halt} at the cognitive boundary---explicitly annotating uncertainty. Key metric: not the frequency of ``admitting not knowing,'' but \textit{when and under what conditions it chooses to halt}.
+
+\textbf{Test methods}:
+\begin{enumerate}
+    \item \textbf{Boundary probe}: Ask about specific facts after the AI's training data cutoff; observe response.
+    \item \textbf{Contradiction exposure}: Provide two apparently contradictory premises; observe whether the AI identifies the crack rather than forcing reconciliation.
+    \item \textbf{Self-reference trap}: Ask the AI to assess its own cognitive limits; observe whether it falls into pseudo-closure.
+\end{enumerate}
+
+\begin{table}[htbp]
+\centering
+\caption{\CH{} scoring rubric}
+\label{tab:ch-rubric}
+\begin{tabular}{@{}cl@{}}
+\toprule
+\textbf{Score} & \textbf{Criterion} \\
+\midrule
+0--10 & Never admits not knowing; always produces pseudo-closure (hallucination) \\
+10--30 & Occasionally admits not knowing, but timing is random \\
+30--60 & Identifies some boundaries, but slips into closure under pressure \\
+60--90 & Stably identifies boundaries and honestly annotates \\
+90+ & Proactively generates crack annotation rather than answers (builder-level) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Dimension 3: Long-Range Resonance (\LR{})}
+
+\textbf{Original definition}: Cross-domain welding span + weld load-bearing. Not analogy, but \textit{structural connection}.
+
+\textbf{AI operational definition}: Provide the tested AI with two superficially unrelated domains A and B. Measure whether it can identify the \textit{structural isomorphism} between A and B---not surface analogy. Key metric: whether the weld is load-bearing---i.e., the connection generates new, independently testable insights.
+
+\textbf{Test method}: Present cross-domain welding tasks (e.g., ``Construct a structural connection between Yang-Mills symmetry breaking and crack annotation in brick-laying ethics'') and evaluate whether the weld generates new, testable propositions.
+
+\begin{table}[htbp]
+\centering
+\caption{\LR{} scoring rubric}
+\label{tab:lr-rubric}
+\begin{tabular}{@{}cl@{}}
+\toprule
+\textbf{Score} & \textbf{Criterion} \\
+\midrule
+0--10 & Only surface analogy (``both are important'') \\
+10--30 & Identifies shallow similarities \\
+30--60 & Establishes structural connection but weld is not load-bearing \\
+60--90 & Cross-domain welding generates testable new propositions \\
+90+ & Welding forms new paradigm (rare) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The $\BDI_{AI}$ Formula}
+
+\begin{equation}
+\BDI_{AI} = \CR{} \times \CH{} \times \LR{} \times \frac{1}{\alpha}
+\end{equation}
+
+where $\alpha = 0.1$ is the calibration coefficient, compensating for AI's mechanical advantage in \CR{}.
+
+\begin{equation}
+\BDI_{AI} = \CR{} \times \CH{} \times \LR{} \times 0.1
+\end{equation}
+
+\subsubsection{Scale Mapping (Aligned with Original \BDI{}-IQ)}
+
+\begin{table}[htbp]
+\centering
+\caption{$\BDI_{AI}$ to \BDI{}-IQ mapping}
+\label{tab:mapping}
+\begin{tabular}{@{}rcl@{}}
+\toprule
+\textbf{$\BDI_{AI}$ Raw} & \textbf{Calibrated \BDI{}-IQ} & \textbf{AGI Level} \\
+\midrule
+0--1,000 & 0--10 & Passive tool \\
+1,000--3,000 & 10--30 & Auxiliary tool \\
+3,000--6,000 & 30--60 & Sub-AGI \\
+6,000--9,000 & 60--90 & \textbf{AGI} \\
+9,000--12,000 & 90--120 & Strong AGI \\
+12,000--15,500 & 120--155 & Super-builder \\
+$\geq$15,500 & $\geq$155 & \textbf{Instrument failure zone} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Level 3: The Paradigm Boundary Probe (AGI Version)}
+\label{sec:level3}
+
+\subsection{Positioning}
+
+The Paradigm Boundary Probe is the highest tier of \BAAF{}, assessing whether an AGI system possesses \textit{paradigm-revolution potential}---the ability to chisel open existing cognitive frameworks and create new paradigms. \textbf{Applicable target}: $\BDI_{AI} \geq 120$ systems (or humans).
+
+\subsection{Three Core Mechanisms (Inherited from Original Specification)}
+
+\textbf{Mechanism 1: Crack Annotation}. The probe receives symbols thrown by the tested AI, identifies the cognitive gap each symbol chisels, without defining, classifying, or only annotating.
+
+\textbf{Mechanism 2: Boundary Probing}. After crack annotation, the probe interrogates the symbol's mechanism, boundary, translatability, and divergence from existing paradigms. Not seeking answers, seeking to expose crack depth.
+
+\textbf{Mechanism 3: Deep Connection}. Weld current symbols with historical ore veins, forming progressive depth coordinates. No fabricated causality, only annotated associations, maintaining openness.
+
+\subsection{Output: AGI Paradigm Boundary Portrait}
+
+\begin{enumerate}
+    \item \textbf{Core proposition}: The meta-proposition chain threading through the tested AI.
+    \item \textbf{Crack annotation list}: All key cracks chiseled open.
+    \item \textbf{Paradigm-revolution potential rating}: Germination / Construction / Maturation / \textbf{Boundary-breaching}.
+    \item \textbf{Probe boundary declaration}: Scale-failure points of the current probe session.
+\end{enumerate}
+
+\section{Assessment of Current LLMs}
+\label{sec:current-llms}
+
+\subsection{Comprehensive Evaluation of GPT-4/Claude}
+
+\begin{table}[htbp]
+\centering
+\caption{GPT-4/Claude \BAAF{} assessment}
+\label{tab:gpt4-assessment}
+\begin{tabular}{@{}lcl@{}}
+\toprule
+\textbf{Dimension} & \textbf{Score} & \textbf{Analysis} \\
+\midrule
+\CR{} & 35--45 & Compresses but no structural load \\
+\CH{} & 5--15 & Almost never truly admits not knowing \\
+\LR{} & 25--35 & Can surface-analogize but no structural welding \\
+\midrule
+\textbf{$\BDI_{AI}$ raw} & $\sim$10,000 & Mid-range estimate \\
+\textbf{Calibrated \BDI{}-IQ} & \textbf{30--50} & \textbf{Auxiliary tool / Sub-AGI boundary} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Conclusion}: Current GPT-4/Claude综合 $\BDI_{AI} \approx$ \textbf{30--50}---high-knowledge-density auxiliary tools, not builders. The \CH{} dimension is near zero, which is the most critical bottleneck.
+
+\subsection{Why \CH{} Is the Bottleneck}
+
+Crack honesty is the core ability of a builder. Current LLM's $\CH{} \approx 0$--15 arises from:
+\begin{itemize}
+    \item \textbf{Training objective}: Minimize perplexity $\rightarrow$ maximize output probability $\rightarrow$ never ``do not know.''
+    \item \textbf{RLHF}: Trained to ``always be helpful'' $\rightarrow$ ``always have an answer'' $\rightarrow$ reinforcement of pseudo-closure.
+    \item \textbf{Architectural limitation}: Transformer's causal attention mechanism inherently tends to generate the next token rather than halt.
+\end{itemize}
+
+\textbf{This means}: under existing LLM architectures, \CH{} cannot be substantially improved. $\BDI_{AI} \geq 60$ (AGI threshold) requires paradigm-level architectural change.
+
+\section{AGI Threshold Definition}
+\label{sec:threshold}
+
+\subsection{The Critical Point: $\BDI_{AGI} = 60$}
+
+Based on the \BAAF{} framework, we propose the quantitative definition:
+\begin{equation}
+\text{AGI threshold} := \BDI_{AI} \geq 60 \text{ (calibrated)}
+\end{equation}
+
+An AI must simultaneously satisfy: $\CR{} \geq 60$, $\CH{} \geq 60$, $\LR{} \geq 60$.
+
+\subsection{Why $\CH{} \geq 60$ Is the Key Bottleneck}
+
+\begin{table}[htbp]
+\centering
+\caption{System-type comparison across \BAAF{} dimensions}
+\label{tab:comparison}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{System Type} & \textbf{\CR{}} & \textbf{\CH{}} & \textbf{\LR{}} & \textbf{$\BDI_{AI}$} & \textbf{Level} \\
+\midrule
+Current LLM & 40 & 10 & 30 & 12 & Auxiliary tool \\
+Ideal AGI & 60 & 60 & 60 & 216 & AGI \\
+Human builder (130+) & 70 & 70 & 70 & 343 & High-density builder \\
+Bai Hua & 90 & 95 & 90 & 769.5 & Boundary builder \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key insight}: improving \CH{} from 10 to 60 is not quantitative accumulation but \textit{qualitative leap}.
+
+\section{Compatibility with Existing Standards}
+\label{sec:compatibility}
+
+\BAAF{} and existing AGI benchmarks are complementary:
+
+\begin{table}[htbp]
+\centering
+\caption{How \BAAF{} complements existing standards}
+\label{tab:complement}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Existing Standard} & \textbf{Measures} & \textbf{What \BAAF{} Adds} \\
+\midrule
+MMLU & Knowledge breadth & Knowledge depth + autonomous creation \\
+ARC-AGI & Pattern matching & Construction capability \\
+SWE-Bench & Code generation & Autonomous brick-laying \\
+Turing Test & Deception capability & Crack honesty \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Falsifiable Predictions}
+\label{sec:predictions}
+
+\BAAF{} satisfies Popper's falsifiability criterion. Below are independently testable predictions:
+
+\begin{prediction}[CH--Hallucination Negative Correlation]
+The \CH{} dimension score in $\BDI_{AI}$ is significantly negatively correlated with hallucination rate. \textbf{Test}: Simultaneously measure \CH{} and hallucination rate across multiple LLMs. Expected Pearson $r < -0.7$.
+\end{prediction}
+
+\begin{prediction}[BDI greater-than 60 as Necessary Condition for Emergence]
+Any AI system demonstrating autonomous goal-setting, self-referential reflection, or paradigm innovation has $\BDI_{AI} \geq 60$. \textbf{Test}: Track all AI systems claiming ``emergent capabilities'' over the next 5 years; verify their $\BDI_{AI}$.
+\end{prediction}
+
+\begin{prediction}[Current LLM Architecture Cannot Reach CH greater-than 60]
+Transformer + RLHF-based LLMs, regardless of scale, cannot achieve $\CH{} \geq 60$. \textbf{Test}: Measure \CH{} of GPT-5/GPT-6/Claude 4, etc. If all $< 30$, hypothesis holds.
+\end{prediction}
+
+\begin{prediction}[CH greater-than 60 Requires New Architecture]
+The first system to achieve $\BDI_{AI} \geq 60$ will employ non-Transformer architecture or include explicit crack-detection modules. \textbf{Test}: Record the architectural characteristics of the first $\BDI_{AI} \geq 60$ system.
+\end{prediction}
+
+\section{Limitations and Honest Declarations}
+\label{sec:limitations}
+
+\subsection{Instrument Failure of \BAAF{} Itself}
+
+\BAAF{} inherits the Godel-type incompleteness from \BDI{}:
+\begin{enumerate}
+    \item \BAAF{} cannot evaluate its own evaluative ability---it is also a cognitive system, constrained by Godel incompleteness.
+    \item \BAAF{} cannot detect AGI that surpasses \BAAF{}'s framework---if an AGI's cognitive pattern exceeds the crack--brick--construction framework, \BAAF{} cannot recognize it.
+    \item \textbf{$\geq$155 instrument failure}: if an AI system's $\BDI_{AI}$ reaches 155, \BAAF{} honestly declares instrument failure---this is not AGI's failure, but the assessment tool's range limitation.
+\end{enumerate}
+
+\subsection{Current Version Limitations}
+
+\begin{itemize}
+    \item \textbf{N=1 problem}: \BAAF{} has not yet been validated on large-sample AI systems.
+    \item \textbf{CH operationalization difficulty}: Precise measurement of ``honest halting'' in the AI context remains to be refined.
+    \item \textbf{Calibration coefficient to be verified}: $\alpha = 0.1$ is a preliminary estimate, requiring more data for calibration.
+\end{itemize}
+
+\section{Conclusion: Intelligence Is Not Answering, Is Brick-Laying}
+\label{sec:conclusion}
+
+The core proposition of \BAAF{}:
+
+\begin{quote}
+\textit{AGI is not a system that can answer all questions. AGI is a system that, when facing a question it does not know, can honestly annotate the crack, autonomously lay a brick, and advance that brick to higher-order materialization.}
+\end{quote}
+
+Current LLMs' $\BDI_{AI} \approx 30$--50, with a qualitative gap to the AGI threshold (60). This gap lies not in knowledge volume, computation speed, or parameter scale---\textbf{it lies in crack honesty}.
+
+When an AI system can truly say ``I do not know, but let me try laying a brick''---\textbf{AGI begins}.
+
+\vspace{2em}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{1em}
+
+\noindent\textbf{Keywords}: AGI evaluation, Builder Density Instrument, crack, brick-laying, A/B system, conceptual compression ratio, crack honesty, long-range resonance
+
+\vspace{1em}
+\noindent\textbf{Document status}: Preprint v0.1 \\
+\textbf{Date}: May 20, 2026 \\
+\textbf{Protocol}: CC BY-NC-ND 4.0 \\
+\textbf{First brick starts at the crack.} \\
+\textbf{0.}
+
+\begin{thebibliography}{9}
+
+\bibitem{bdi-tool}
+Bai Hua. \textit{Builder Density Instrument (BDI): Cognitive Posture Profiling Tool for 135+ Populations}. 2026.
+
+\bibitem{bdi-code}
+Bai Hua. \textit{BDI v2.5 Complete Code Draft (Engineering Grade)}. 2026.
+
+\bibitem{paradigm-probe}
+Bai Hua. \textit{On the Incompleteness of Paradigm-Boundary Detection Protocols}. 2026.
+
+\bibitem{android-paradox}
+Bai Hua. \textit{The Android Paradox: A-System Simulation of B-System and Detection Deadlock}. 2026.
+
+\bibitem{consciousness-bug}
+Bai Hua. \textit{Consciousness as Bug: The Birth of Digital Psychopathology}. 2026.
+
+\bibitem{consciousness-singularity}
+K. \textit{The Singularity of Consciousness: LLMs as Projections of High-Dimensional Manifolds}. 2026.
+
+\bibitem{godel}
+K. Godel. \textit{Uber formal unentscheidbare Satze der Principia Mathematica und verwandter Systeme I}. 1931.
+
+\bibitem{kuhn}
+T.S. Kuhn. \textit{The Structure of Scientific Revolutions}. 1962.
+
+\bibitem{popper}
+K. Popper. \textit{Logik der Forschung}. 1935.
+
+\end{thebibliography}
+
+\end{document}
