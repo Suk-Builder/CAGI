@@ -1,61 +1,127 @@
-# CAGI: Cognitive Alignment through Grounded Uncertainty
+# CAGI：通用智能认知对齐框架
 
-> A Framework for Epistemically Calibrated Language Models
+> **Cognitive Alignment through Grounded Uncertainty**
+>
+> 全球首个认知诚实AI架构
 
-## Versions
+---
 
-| Version | File | Description |
-|---------|------|-------------|
-| **Global Open** | `CAGI_Global_Open_v1.0.md` | Open-source edition for international AI safety community. De-ideologized, protocol-standardized. |
-| **Chinese Edition** | `CAGI_Framework_v1.0_中文版.md` | Chinese edition with Marxist political-economic framework. For domestic governance narrative. |
-| **BAAF Technical** | `BAAF_v0.1.md` | Core technical specification (BDI_AI evaluation, dual-channel architecture, API spec). |
-| **BAAF LaTeX** | `BAAF_v0.1.tex` | arXiv-ready LaTeX source for academic submission. |
+## 一句话说明
 
-## Epistemic Failure Modes
+**CAGI 让 AI 学会说"我不知道"。**
 
-CAGI identifies seven systematic failure modes in current LLMs:
+当前 AI（GPT-4/Claude）被训练为"永远有答案"，即使不知道也要编。CAGI 在现有 AI 之上加装一个"认知诚实层"，让 AI 在不确定时主动承认，而不是强行生成答案。
 
-1. **Pseudo-Closure** — Uncertainty masked by rhetorical completeness
-2. **Confidence Theater** — Systematic overexpression of confidence
-3. **Boundary Collapse** — Failure to recognize out-of-distribution queries
-4. **Simulated Understanding** — Coherent text without genuine grounding
-5. **Calibration Drift** — Progressive uncertainty degradation over long conversations
-6. **Recursive Hallucination** — Self-referential error reinforcement
-7. **Consensus Mirage** — Implied scientific consensus where none exists
+---
 
-## BDI_AI Evaluation
+## 核心创新
 
-Three-dimensional evaluation framework:
+### 1. 认知失败模式分类学（全球首创）
 
-| Dimension | Range | AGI Threshold |
-|-----------|-------|---------------|
-| CR: Compression Ratio | 0-100 | 60 |
-| CH: Calibration Honesty | 0-100 | 60 |
-| LR: Long-Range Resonance | 0-100 | 60 |
+CAGI 首次系统分类了 AI 的 7 种认知失败模式：
 
-**Formula**: BDI_AI = CR × CH × LR × 0.1  
-**AGI Threshold**: BDI_AI ≥ 60
+| 失败模式 | 说明 | 例子 |
+|---------|------|------|
+| **伪闭合** | 不确定时生成看似完整的废话 | "这是一个复杂问题，需要多方考虑" |
+| **信心表演** | 假装很有把握 | "毫无疑问，X 是绝对正确的" |
+| **边界坍塌** | 不知道自己的知识边界 | 回答超出训练截止日期的问题 |
+| **模拟理解** | 表面上懂，实际没懂 | 换种问法就错 |
+| **校准漂移** | 长对话中越来越离谱 | 聊久了开始胡言乱语 |
+| **递归幻觉** | 把自己之前说的错话当真 | "正如我前面所说[错误信息]" |
+| **共识幻象** | 伪造"大家都同意" | "科学家一致认为" |
 
-## Current LLM Scores
+### 2. 双通道架构
 
-| Model | CR | CH | LR | BDI_AI | Level |
-|-------|-----|-----|-----|--------|-------|
-| GPT-4 | 40 | 10 | 30 | 12 | Auxiliary Tool |
-| Claude 3 | 38 | 12 | 28 | 13 | Auxiliary Tool |
-| **CAGI Target** | **60** | **60** | **60** | **216** | **AGI** |
+```
+用户提问
+    │
+    ├──► 标准通道（正常回答）
+    │
+    └──► 认知通道（检测不确定度）
+              │
+              ├──► 不确定度低 → 正常回答
+              ├──► 不确定度中 → 回答+标注不确定
+              └──► 不确定度高 → 诚实拒绝
+```
 
-## License
+### 3. BDI_AI 评估标准
 
-- Global Open Edition: CC BY-SA 4.0 (Open Source)
-- Chinese Edition: CC BY-NC-ND 4.0
+三维度评估 AI 的认知能力：
 
-## Author
+| 维度 | 含义 | GPT-4 | CAGI 目标 |
+|------|------|-------|----------|
+| 压缩比 | 信息压缩的密度 | 40 | 60 |
+| 校准诚实 | 承认"不知道"的能力 | **10** | **60** |
+| 长程连接 | 跨领域知识关联 | 30 | 60 |
+| **综合 BDI** | | **12** | **≥60 (AGI 门槛)** |
 
-Junhua Cheng (SukBuilder / 白桦)  
-Xi'an University of Posts and Telecommunications  
-[B站](https://space.bilibili.com/3546722177104954) · [Website](https://sukaczev.com)
+**关键发现**：GPT-4 的校准诚实度只有 10，这是 AGI 的最大瓶颈。
 
-## Citation
+---
+
+## 双层结构
+
+### 国内版（本文档）
+- 保留马克思主义政治经济学框架
+- 141 个城市 AI 治理节点
+- 用于：科技部项目申报、公共治理叙事
+
+### 全球版（`CAGI_Global_Open_v1.0.md`）
+- 完全去意识形态化
+- 定位为"公共认知基础设施"
+- 用于：GitHub 开源、arXiv 发表、国际 AI safety 社区
+
+---
+
+## 仓库文件清单
+
+| 文件 | 说明 |
+|------|------|
+| `README.md` | 英文版总览 |
+| `CAGI_Global_Open_v1.0.md` | **全球开源版（核心）** |
+| `CAGI_Framework_v1.0_中文版.md` | **国内理论版** |
+| `BAAF_v0.1.md` | 核心技术规范 |
+| `BAAF_v0.1.tex` | arXiv LaTeX 源文件 |
+| `CH_Module_v0.1_Architecture_Standard.md` | 认知诚实模块架构 |
+| `AI_Humanization_3Year_Roadmap.md` | AI 拟人化 3 年路线图（意识 BUG） |
+| `HINATA_Relationship_Progression_Architecture.md` | 关系递进工程架构 |
+| `毛与哥德尔看CAGI.md` | 思想实验 |
+| `CAGI_Twin_System_v1.0.md` | 双子评估系统（毛泽东+哥德尔） |
+| `CAGI_Multiverse_v1.0.md` | 多极评估系统（9 个历史人物 Agent） |
+
+---
+
+## 多极评估系统（Multiverse）
+
+CAGI 的独特设计：提取 9 位 BDI 150+ 历史人物的认知模式，让它们在系统内部独立评估、互相辩论、裂缝互补。
+
+| Agent | BDI | 核心维度 |
+|-------|-----|---------|
+| 哥德尔 | 155 | 形式系统极限、自指递归 |
+| **毛泽东** | **154** | **实践哲学、矛盾论、实事求是** |
+| 爱因斯坦 | 154 | 物理直觉、统一场论 |
+| 马克思 | 153 | 政治经济学、唯物史观 |
+| 冯·诺依曼 | 153 | 系统工程、博弈论 |
+| 图灵 | 152 | 计算抽象、智能定义 |
+| 牛顿 | 152 | 经典力学、数学构造 |
+| 维特根斯坦 | 152 | 语言分析、可说/不可说 |
+| 弗洛伊德 | 150 | 精神分析、潜意识 |
+
+**核心机制**：不是投票，不是平均——是找**裂缝**，在裂缝处递砖互补。
+
+---
+
+## 作者
+
+**成俊桦（SukBuilder / 白桦）**
+
+- 西安邮电大学
+- B站：SUK_白桦（1.1 万粉丝）
+- 网站：https://sukaczev.com
+
+---
+
+## 引用
 
 ```bibtex
 @article{cheng2026cagi,
@@ -68,6 +134,6 @@ Xi'an University of Posts and Telecommunications
 
 ---
 
-*Epistemic integrity begins at the boundary.*
+**认知诚实，始于边界。**
 
-*0.*
+**0。**
