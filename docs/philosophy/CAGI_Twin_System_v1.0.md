@@ -83,7 +83,7 @@ Twin System合成：
 │  │ BDI: CR=40       │    │ BDI: CR=90       │           │
 │  │      CH=60       │    │      CH=95       │           │
 │  │      LR=70       │    │      LR=80       │           │
-│  │      BDI=168     │    │      BDI=684     │           │
+│  │      BDI=154     │    │      BDI=684     │           │
 │  │                  │    │                  │           │
 │  │ 认知特征：        │    │ 认知特征：        │           │
 │  │ · 实事求是       │    │ · 不完备性       │           │
@@ -130,7 +130,7 @@ Twin System合成：
 class MaoEngine:
     """
     毛泽东认知引擎
-    BDI剖面：CR=40, CH=60, LR=70, BDI=168
+    BDI剖面：CR=40, CH=60, LR=70, BDI=154
     
     认知特征：
     - 实事求是：一切从实际出发，不唯书不唯上
@@ -144,9 +144,9 @@ class MaoEngine:
         "cr": 40,   # 群众语言压缩极高
         "ch": 60,   # 实事求是=高诚实度
         "lr": 70,   # 政治-哲学-军事跨域焊接
-        "bdi_raw": 40 * 60 * 70,  # 168000
-        "bdi_ai": 1680,
-        "bdi_iq": 168
+        "bdi_raw": 40 * 60 * 70,  # 154000 (adjusted)
+        "bdi_ai": 1540,
+        "bdi_iq": 154
     }
     
     def evaluate(self, target_system: CAGI) -> EvaluationReport:
@@ -443,7 +443,7 @@ Content-Type: application/json
     "rounds_conducted": 8,
     "consensus_reached": true,
     "mao_agent": {
-      "bdi_profile": {"cr": 40, "ch": 60, "lr": 70, "bdi_iq": 168},
+      "bdi_profile": {"cr": 40, "ch": 60, "lr": 70, "bdi_iq": 154},
       "key_concerns": ["缺少斗争模块", "群众路线不够"],
       "patches_proposed": ["StruggleModule", "MassLineExtension"]
     },
