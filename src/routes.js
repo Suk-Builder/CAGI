@@ -135,7 +135,7 @@ async function handleRoutes(req, res, parsed) {
     if (!session) { json(res, 404, { success: false, message: 'not found' }); return true; }
     res.writeHead(200, { 'Content-Type': 'text/event-stream; charset=utf-8', 'Cache-Control': 'no-cache', 'Connection': 'keep-alive', 'X-Accel-Buffering': 'no' });
     res.write('retry: 3000\n\n');
-    res.write(`event: snapshot\ndata: ${{JSON.stringify({ status: session.status, round: session.round, history: session.history, debateId })}}\n\n`);
+    res.write(`event: snapshot\ndata: ${JSON.stringify({ status: session.status, round: session.round, history: session.history, debateId })}\n\n`);
     session.sseClients.add(res);
     const hb = setInterval(() => { try { res.write(': ping\n\n'); } catch(e) { clearInterval(hb); } }, 15000);
     req.on('close', () => { session.sseClients.delete(res); clearInterval(hb); });
