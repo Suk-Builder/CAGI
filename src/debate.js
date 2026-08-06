@@ -24,7 +24,7 @@ function buildNotebook(session, entityId) {
   if (!notes?.length) return '';
   const recent = notes.slice(-3);
   let ctx = '\n\n【笔记本——你需要回应的观点】\n';
-  for (const n of recent) ctx += `\n[${{n.label}} · ${{n.fromName}} (R${{n.round}})]: ${{n.content}}`;
+  for (const n of recent) ctx += `\n[${n.label} · ${n.fromName} (R${n.round})]: ${n.content}`;
   ctx += '\n\n请点名回应以上观点中最有问题的那个。不要复读——每次发言必须推进辩论。';
   session.notebooks[entityId] = [];
   return ctx;
@@ -59,7 +59,7 @@ async function generateSpeech(session, entityId, round) {
   const stance = session.stances[entityId] || 'neutral';
   const task = STANCE_TASKS[stance] || STANCE_TASKS.neutral;
 
-  let sys = (entity.systemPrompt || '') + `\n\n【辩论任务】${{task}}\n\n你只以 ${{entity.nameCn}}（${{entity.name}}）的身份发言，绝不出戏。你的辩论对象是裂缝演算(Crack Calculus)。`;
+  let sys = (entity.systemPrompt || '') + `\n\n【辩论任务】${task}\n\n你只以 ${entity.nameCn}（${entity.name}）的身份发言，绝不出戏。你的辩论对象是裂缝演算(Crack Calculus)。`;
   let user = `【辩论对象：裂缝演算(Crack Calculus)】\n公理: ①矛盾作为本体论 ②实践作为标准 ③哥德尔不完备作为物理定律\n本体=裂缝。连续统(ℝ⁴)是10²³密度下的宏观幻觉。空间=普朗克格距的绝对离散网格。时间=轨迹索引。\n推导链M1-M9: 元胞自动机→连续化→光速可变→麦克斯韦→引力→薛定谔→质量谱→梅森链力常数→宇宙学。\n`;
   if (round === 1) user += (STANCE_OPENINGS[stance] || '');
 
@@ -69,7 +69,7 @@ async function generateSpeech(session, entityId, round) {
   const t0 = Date.now();
   let content;
   try { content = await callLLM(sys, [{ role: 'user', content: user }], 800); }
-  catch (e) { content = `[错误: ${{e.message}}]`; }
+  catch (e) { content = `[错误: ${e.message}]`; }
 
   const speech = { entityId, name: entity.nameCn, bdi: entity.bdiAi, content, round, role: 'entity', ts: Date.now() };
   session.history.push(speech);

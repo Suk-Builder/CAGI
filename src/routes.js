@@ -17,7 +17,7 @@ function json(res, code, data) {
   res.end(JSON.stringify(data));
 }
 function sse(res, session, event, data) {
-  const p = `event: ${{event}}\ndata: ${{JSON.stringify(data)}}\n\n`;
+  const p = `event: ${event}\ndata: ${JSON.stringify(data)}\n\n`;
   for (const r of session.sseClients) { try { r.write(p); } catch(e) {} }
 }
 
@@ -29,13 +29,13 @@ async function doDialogue(body) {
   const topic = TOPICS[topicIndex] || TOPICS[0];
   const messages = [];
   if (history.length === 0) {
-    messages.push({ role: 'user', content: customQuestion || `[话题：${{topic.titleCn}}] ${{topic.opening}}` });
+    messages.push({ role: 'user', content: customQuestion || `[话题：${topic.titleCn}] ${topic.opening}` });
   } else {
     for (const h of history) {
-      messages.push({ role: 'user', content: `[对话者] ${{h.user}}` });
+      messages.push({ role: 'user', content: `[对话者] ${h.user}` });
       messages.push({ role: 'assistant', content: h.entity });
     }
-    messages.push({ role: 'user', content: `请继续以${{entity.nameCn}}的身份回应。` });
+    messages.push({ role: 'user', content: `请继续以${entity.nameCn}的身份回应。` });
   }
   const problem = customQuestion || (history.length ? history[history.length-1].user : topic.titleCn);
   const enriched = entity.systemPrompt + getTopologyContext(entityId) + memPrompt(entityId, problem);

@@ -73,12 +73,12 @@ async function _retry(systemPrompt, messages, maxTokens, preferred) {
       try { return await _single(b, systemPrompt, messages, maxTokens); }
       catch (err) {
         lastErr = err;
-        console.error(`[LLM] ${{b.name}} fail (#${{attempt+1}}): ${{err.message}}`);
+        console.error(`[LLM] ${b.name} fail (#${attempt+1}): ${err.message}`);
         await sleep(1000 * (attempt + 1));
       }
     }
   }
-  throw new Error(`All backends failed. Last: ${{lastErr?.message}}`);
+  throw new Error(`All backends failed. Last: ${lastErr?.message}`);
 }
 
 async function _single(backend, systemPrompt, messages, maxTokens) {
@@ -94,7 +94,7 @@ async function _single(backend, systemPrompt, messages, maxTokens) {
   if (backend.format === 'openrouter') { headers['HTTP-Referer']='https://sukaczev.com'; headers['X-Title']='Entities-150'; }
   try {
     const res = await fetch(backend.apiUrl, { method: 'POST', headers, body: JSON.stringify(body), signal: ctrl.signal });
-    if (!res.ok) { const t = await res.text(); throw new Error(`HTTP ${{res.status}}: ${{t.slice(0,200)}}`); }
+    if (!res.ok) { const t = await res.text(); throw new Error(`HTTP ${res.status}: ${t.slice(0,200)}`); }
     const data = await res.json();
     if (data.choices?.[0]?.message?.content) return data.choices[0].message.content;
     throw new Error('Invalid: ' + JSON.stringify(data).slice(0,200));
@@ -114,8 +114,8 @@ function memPrompt(id, currentProblem) {
   const rel = m.discoveries.filter(d => !currentProblem || d.problem===currentProblem || currentProblem.includes(d.problem) || d.problem.includes(currentProblem)).slice(0,5);
   const other = m.discoveries.filter(d => !rel.includes(d)).slice(0,3);
   const lines = ['\n[你的长期记忆——继续推进]'];
-  [...rel, ...other].forEach((d,i) => lines.push(`${{i+1}}. [${{d.problem}}] ${{d.content.slice(0,120)}}`));
-  lines.push(`\n[记录: ${{m.discoveries.length}}个]\n`); return lines.join('\n');
+  [...rel, ...other].forEach((d,i) => lines.push(`${i+1}. [${d.problem}] ${d.content.slice(0,120)}`));
+  lines.push(`\n[记录: ${m.discoveries.length}个]\n`); return lines.join('\n');
 }
 function memExtract(id, problem, response) {
   const formulas = [];
