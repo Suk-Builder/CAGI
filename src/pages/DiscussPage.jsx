@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const API_URL = '/api'
+const API_URL = 'http://43.160.209.250:7788'
 
 const backends = [
   { value: 'nvidia', label: 'NVIDIA Nemotron 3 Ultra 550B', tag: 'tag-nvidia' },

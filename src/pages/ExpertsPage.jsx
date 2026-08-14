@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const API_URL = '/api'
+const API_URL = 'http://43.160.209.250:7788'
 
 export default function ExpertsPage() {
   const [experts, setExperts] = useState([])
