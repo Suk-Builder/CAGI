@@ -3,6 +3,8 @@ import DiscussPage from './pages/DiscussPage.jsx'
 import HistoryPage from './pages/HistoryPage.jsx'
 import ExpertsPage from './pages/ExpertsPage.jsx'
 import StatusPage from './pages/StatusPage.jsx'
+import SolvayPage from './pages/SolvayPage.jsx'
+import StreamPage from './pages/StreamPage.jsx'
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <li><NavLink to="/history">📜 历史记录</NavLink></li>
           <li><NavLink to="/experts">👥 专家人格</NavLink></li>
           <li><NavLink to="/status">🔌 后端状态</NavLink></li>
+          <li><NavLink to="/solvay">⚛️ 索尔维会议</NavLink></li>
+          <li><NavLink to="/stream">📡 无限流式</NavLink></li>
         </ul>
       </aside>
       <main className="main">
@@ -23,6 +27,8 @@ function App() {
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/experts" element={<ExpertsPage />} />
           <Route path="/status" element={<StatusPage />} />
+          <Route path="/solvay" element={<SolvayPage />} />
+          <Route path="/stream" element={<StreamPage />} />
         </Routes>
       </main>
     </div>
